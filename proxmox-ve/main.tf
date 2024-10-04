@@ -11,10 +11,10 @@ resource "proxmox_vm_qemu" "proxmox-ubuntu" {
   target_node = "pve"
 
   # cloud-init template
-  clone      = "VM 901"
+  clone      = "VM 1000"
   full_clone = true
 
-
+  # storage= local-lvm
   cores   = 4
   sockets = 1
   # 内存
@@ -24,6 +24,7 @@ resource "proxmox_vm_qemu" "proxmox-ubuntu" {
   agent   = 1
   os_type = "linux"
   onboot  = true
+  # boot = "scsi0"
 
 
   network {
@@ -37,18 +38,6 @@ resource "proxmox_vm_qemu" "proxmox-ubuntu" {
   ciuser     = "root"
   cipassword = "123456"
 
-#   provisioner "local-exec" {
-#     when = destroy
-#     command = <<EOT
-#       qm stop ${self.triggers.vm_id}         # 关闭虚拟机
-#       qm unlock ${self.triggers.vm_id}       # 解锁虚拟机以防止锁定状态
-#       qm set ${self.triggers.vm_id} --delete scsi0  # 删除硬盘
-# EOT
-#   }
-
-#   triggers = {
-#     vm_id =  proxmox_vm_qemu.proxmox-ubuntu.vmid# 将存储桶名称作为触发器存储
-#   }
 }
 
 
@@ -66,6 +55,6 @@ variable "instance_count" {
 
 variable "ips" {
   type        = string
-  default     = "192.168.3"
+  default     = "192.168.144"
   description = "description"
 }

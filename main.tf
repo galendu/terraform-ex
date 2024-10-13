@@ -143,6 +143,11 @@ resource "null_resource" "s3_op" {
   depends_on = [module.s3_web]
 }
 
+module "test" {
+  source = "./modules/ec2-instance"
+}
+
+
 # import
 # resource "aws_instance" "example" {
 #   ami           = var.ami_id

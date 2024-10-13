@@ -20,6 +20,9 @@ export AWS_SECRET_ACCESS_KEY=sk
 
 `aws resourcegroupstaggingapi get-resources --region us-west-1` 
 
+## terraform调试  
+>
+`terraform destroy   -target="module.test"`
 
 ## terraformer的使用  
 

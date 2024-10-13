@@ -29,3 +29,7 @@ output "aws_key_path" {
 output "aws_s3_bucket" {
   value = module.s3_web.name
 }
+
+output "module_test_id" {
+  value = module.test.instance_id
+}
